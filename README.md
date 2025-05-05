@@ -4,14 +4,11 @@ A Flutter package for trimming videos with customizable features and intuitive c
 ## 🎥 Demo
 Check out the video trimming in action!
  
-[//]: # (![Video Trimmer Gif]&#40;assets/trimmer_gif.gif&#41;)
+![Video Trimmer Gif](assets/trimmer_gif.gif)
  
 ![Video Trimmer UI]
 
-
 https://github.com/user-attachments/assets/b1c7985f-e3ae-4299-b2cd-b9a76da03efb
-
-
 
 ✨ Features
 Customizable Video Trimmer: Tailor the trimming interface to your needs.
