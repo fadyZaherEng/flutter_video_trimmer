@@ -50,7 +50,7 @@ android:name="android.permission.READ_MEDIA_VIDEO" />
 For iOS, add the following keys to your Info.plist to request the required permissions for camera,
 microphone, and photo library access:
 
-<details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
+<details> <summary><strong>▶️ Show iOS Configuration (Info.plist)</strong></summary>
 <key>NSCameraUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
 
