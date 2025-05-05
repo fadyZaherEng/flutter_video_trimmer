@@ -23,7 +23,7 @@ Video File Management: Load and save video files seamlessly.
 Add the following dependency to your pubspec.yaml:
 
 dependencies:
-flutter_video_trimmer: ^3.0.7
+flutter_video_trimmer_ios_android: ^3.0.8
 
 ## 🛠️ Configuration
 
@@ -47,7 +47,7 @@ camera and storage access:
 For iOS, add the following keys to your Info.plist to request the required permissions for camera,
 microphone, and photo library access:
 
-<details> <summary><strong>▶️ Show iOS Configuration (Info.plist)</strong></summary>
+<details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
 <key>NSCameraUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
 
@@ -453,8 +453,8 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
 }
 ```
 
-Before using this example directly in a Flutter app, don't forget to add the flutter_video_trimmer &
-file_picker packages to your pubspec.yaml file.
+Before using this example directly in a Flutter app, don't forget to add the flutter_video_trimmer_ios_android &
+image_picker packages to your pubspec.yaml file.
 
 You can try out this example by replacing the entire content of main.dart file of a newly created
 Flutter project.

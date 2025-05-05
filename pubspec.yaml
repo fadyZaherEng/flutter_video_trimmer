@@ -2,7 +2,7 @@ name: flutter_video_trimmer_ios_android
 description: "A video trimmer plugin for Flutter that allows users to trim and edit videos on both iOS and Android."
 repository: https://github.com/fadyZaherEng/flutterVideoTrimmer
 homepage: https://github.com/fadyZaherEng/flutterVideoTrimmer
-version: 3.0.7
+version: 3.0.8
 publish_to:
 
 environment:

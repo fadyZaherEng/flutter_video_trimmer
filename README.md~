@@ -23,7 +23,7 @@ Video File Management: Load and save video files seamlessly.
 Add the following dependency to your pubspec.yaml:
 
 dependencies:
-flutter_video_trimmer: ^3.0.4
+flutter_video_trimmer: ^3.0.7
 
 ## 🛠️ Configuration
 
