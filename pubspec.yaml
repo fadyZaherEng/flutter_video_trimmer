@@ -1,9 +1,7 @@
 name: flutter_video_trimmer
 description: "A video trimmer plugin for Flutter."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 repository: https://github.com/fadyZaherEng/FlutterTrimmerPackage
-homepage:
-
+homepage: https://github.com/fadyZaherEng/FlutterTrimmerPackage
 version: 1.0.0+1
 
 environment:
@@ -23,7 +21,7 @@ dependencies:
   loading_animation_widget:
   video_player:
   path_provider:
-  intl:
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

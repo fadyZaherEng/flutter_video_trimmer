@@ -17,7 +17,7 @@ Installation
 Add the following dependency to your pubspec.yaml:
 
 dependencies:
-flutter_video_trimmer: 0.0.1
+flutter_video_trimmer: 1.0.0
 
 Android Configuration:
 add the following to your AndroidManifest.xml
