@@ -47,7 +47,18 @@ camera and storage access:
 For iOS, add the following keys to your Info.plist to request the required permissions for camera,
 microphone, and photo library access:
 
+<details>
+<summary><strong>▶️ Show iOS Configuration</strong></summary>
 
+```info.plist
+<key>NSCameraUsageDescription</key>
+<string>Used to demonstrate image picker plugin</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Used to capture audio for image picker plugin</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Used to demonstrate image picker plugin</string>
+```
+</details>
 
 📌 Example: README Section
 
