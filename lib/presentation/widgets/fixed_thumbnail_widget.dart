@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:flutter_video_trimmer/core/utils/trimmer_utils.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trimmer_utils.dart';
+ import 'package:transparent_image/transparent_image.dart';
 
 
 class FixedThumbnailWidget extends StatelessWidget {

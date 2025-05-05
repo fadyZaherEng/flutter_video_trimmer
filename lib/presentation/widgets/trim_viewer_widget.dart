@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_video_trimmer/core/utils/duration_styles.dart';
-import 'package:flutter_video_trimmer/core/utils/trim_area_properties.dart';
-import 'package:flutter_video_trimmer/core/utils/trim_editor_properties.dart';
-import 'package:flutter_video_trimmer/core/utils/viewer_type_enum.dart';
-import 'package:flutter_video_trimmer/flutter_video_trimmer.dart';
-import 'package:flutter_video_trimmer/presentation/widgets/fixed_trim_widget.dart';
-import 'package:flutter_video_trimmer/presentation/widgets/scrollable_trim_widget.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/duration_styles.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trim_area_properties.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_properties.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/viewer_type_enum.dart';
+import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
+import 'package:flutter_video_trimmer_ios_android/presentation/widgets/fixed_trim_widget.dart';
+import 'package:flutter_video_trimmer_ios_android/presentation/widgets/scrollable_trim_widget.dart';
 
 class TrimViewer extends StatefulWidget {
   /// The Trimmer controller instance.

@@ -4,13 +4,13 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_video_trimmer/core/utils/duration_styles.dart';
-import 'package:flutter_video_trimmer/core/utils/editor_drag_type.dart';
-import 'package:flutter_video_trimmer/core/utils/trim_area_properties.dart';
-import 'package:flutter_video_trimmer/core/utils/trim_editor_painter.dart';
-import 'package:flutter_video_trimmer/core/utils/trim_editor_properties.dart';
-import 'package:flutter_video_trimmer/flutter_video_trimmer.dart';
- import 'package:flutter_video_trimmer/presentation/widgets/scrollable_thumbnail_widget.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/duration_styles.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/editor_drag_type.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trim_area_properties.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_painter.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_properties.dart';
+import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
+ import 'package:flutter_video_trimmer_ios_android/presentation/widgets/scrollable_thumbnail_widget.dart';
 import 'package:video_player/video_player.dart';
 
 /// Widget for displaying the video trimmer.
