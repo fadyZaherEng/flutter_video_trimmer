@@ -1,6 +1,13 @@
 🎬 Video Trimmer
 A Flutter package for trimming videos with customizable features and intuitive controls.
 
+## 🎥 Demo
+
+Check out the video trimming in action!
+
+![Video Trimmer Demo](flutter_video_trimmer/assets/trimmer_gif.gif)
+
+
 ![Video Trimmer UI] (https://github.com/user-attachments/assets/f8f36d38-c54c-4b50-ad6c-5b91c120180c)
 
 ✨ Features
@@ -39,8 +46,16 @@ For Android, you need to modify the `AndroidManifest.xml` to request the require
 
 </details>
 
+🍎 iOS Configuration
+For iOS, add the following keys to your Info.plist to request the required permissions for camera, microphone, and photo library access:
+
+<details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
+
+
 iOS Configuration
 For iOS, add the following keys in your Info.plist to request the required permissions for camera, microphone, and photo library access:
+
+```xml
 
 <details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
 <key>NSCameraUsageDescription</key>
@@ -49,7 +64,7 @@ For iOS, add the following keys in your Info.plist to request the required permi
 <string>Used to capture audio for image picker plugin</string>
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
-
+```
 </details>
 
  
