@@ -6,6 +6,7 @@ Check out the video trimming in action!
  
  
 <p align="center">
+<comment>Video Gif </comment>
   <img src="assets/trimmer_gif.gif" width="400" />
 </p>
  
