@@ -1,6 +1,1 @@
-## [3.0.1] - 2025-05-05
-
-- Initial stable release.
-- Customizable video trimmer UI with blur, arrows, and radius support.
-- Supports video trimming, playback, and saving.
-- Includes scrollable and fixed-length trim views.
+## [3.0.4] - 2025-05-05
