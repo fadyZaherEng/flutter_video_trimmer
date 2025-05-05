@@ -3,20 +3,11 @@ A Flutter package for trimming videos with customizable features and intuitive c
 
 ## 🎥 Demo
 Check out the video trimming in action!
- 
- 
-<p align="center">
-<comment>Video Gif </comment>
-  <img src="assets/trimmer_gif.gif" width="400" />
-</p>
- 
-
-![Video Trimmer UI]https://github.com/user-attachments/assets/b1c7985f-e3ae-4299-b2cd-b9a76da03efb
 
 <table>
   <tr>
-    <td><img src="https://github.com/mdazharuddin1011999/UPI-Plugin-Flutter/raw/master/images/success.jpg" alt="Success Status" width="200"></td>
-    <td><img src="https://github.com/mdazharuddin1011999/UPI-Plugin-Flutter/raw/master/images/show.gif" alt="How example looks" width="200"></td>
+    <td><img src="https://github.com/fadyZaherEng/FlutterTrimmerPackage/raw/master/assets/trimmer_gif.gif" alt="Trimmer Gif" width="200"></td>
+    <td><img src="https://github.com/fadyZaherEng/FlutterTrimmerPackage/raw/master/assets/video.mp4" alt="Trimmer Video" width="200"></td>
   </tr>
 </table>
 

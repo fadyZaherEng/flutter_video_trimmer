@@ -6,8 +6,8 @@ Check out the video trimming in action!
 
 <table>
   <tr>
-    <td><img src="https://github.com/fadyZaherEng/FlutterTrimmerPackage/raw/master/assets/trimmer_gif.gif" alt="Trimmer Gif" width="200"></td>
-    <td><img src="https://github.com/fadyZaherEng/FlutterTrimmerPackage/raw/master/assets/video.mp4" alt="Trimmer Video" width="200"></td>
+    <td><img src="https://github.com/fadyZaherEng/FlutterTrimmerPackage/raw/master/assets/trimmer_gif.gif" alt="Trimmer Gif" width="400"></td>
+    <td><img src="https://github.com/fadyZaherEng/FlutterTrimmerPackage/raw/master/assets/video.mp4" alt="Trimmer Video" width="400"></td>
   </tr>
 </table>
 
