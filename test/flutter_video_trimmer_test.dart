@@ -1,8 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_video_trimmer/flutter_video_trimmer.dart';
 
 void main() {
   test('FlutterVideoTrimmer', () {
-    final FlutterVideoTrimmer flutterVideoTrimmer = FlutterVideoTrimmer();
-  });
+   });
 }
