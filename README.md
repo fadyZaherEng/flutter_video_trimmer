@@ -37,13 +37,11 @@ camera and storage access:
   <summary><strong>▶️ Show Android Configuration</strong></summary>
 
 ```xml
-
-<uses-permission android:name="android.permission.CAMERA" /><uses-permission
-android:name="android.permission.READ_EXTERNAL_STORAGE" /><uses-permission
-android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><uses-permission
-android:name="android.permission.READ_MEDIA_VIDEO" />
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 ```
-
 </details>
 
 🍎 iOS Configuration
