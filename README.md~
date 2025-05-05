@@ -2,11 +2,9 @@
 A Flutter package for trimming videos with customizable features and intuitive controls.
 
 ## 🎥 Demo
-![Uploading WhatsAppVideo2025-05-05at11.45.55_b6b12137-ezgif.com-video-to-gif-converter.gif…]()
-
 Check out the video trimming in action!
-
-![Video Trimmer Demo](flutter_video_trimmer/assets/trimmer_gif.gif)
+ 
+[Video Trimmer Demo](flutter_video_trimmer/assets/trimmer_gif.gif)
 
 ![Video Trimmer UI] (https://github.com/user-attachments/assets/f8f36d38-c54c-4b50-ad6c-5b91c120180c)
 
