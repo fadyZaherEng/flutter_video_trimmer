@@ -7,7 +7,6 @@ Check out the video trimming in action!
 
 ![Video Trimmer Demo](flutter_video_trimmer/assets/trimmer_gif.gif)
 
-
 ![Video Trimmer UI] (https://github.com/user-attachments/assets/f8f36d38-c54c-4b50-ad6c-5b91c120180c)
 
 ✨ Features
@@ -22,40 +21,34 @@ Video File Management: Load and save video files seamlessly.
 📌 README Section with Configuration Details
 🚀 Getting Started Installation
 
-
 Add the following dependency to your pubspec.yaml:
 
 dependencies:
 flutter_video_trimmer: ^3.0.4
 
-
 ## 🛠️ Configuration
 
 ### Android Configuration
-For Android, you need to modify the `AndroidManifest.xml` to request the required permissions for camera and storage access:
+
+For Android, you need to modify the `AndroidManifest.xml` to request the required permissions for
+camera and storage access:
 
 <details>
   <summary><strong>▶️ Show Android Configuration</strong></summary>
 
 ```xml
-<uses-permission android:name="android.permission.CAMERA" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+<uses-permission android:name="android.permission.CAMERA" /><uses-permission
+android:name="android.permission.READ_EXTERNAL_STORAGE" /><uses-permission
+android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><uses-permission
+android:name="android.permission.READ_MEDIA_VIDEO" />
 ```
 
 </details>
 
 🍎 iOS Configuration
-For iOS, add the following keys to your Info.plist to request the required permissions for camera, microphone, and photo library access:
-
-<details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
-
-
-iOS Configuration
-For iOS, add the following keys in your Info.plist to request the required permissions for camera, microphone, and photo library access:
-
-```xml
+For iOS, add the following keys to your Info.plist to request the required permissions for camera,
+microphone, and photo library access:
 
 <details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
 <key>NSCameraUsageDescription</key>
@@ -64,15 +57,18 @@ For iOS, add the following keys in your Info.plist to request the required permi
 <string>Used to capture audio for image picker plugin</string>
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
-```
 </details>
 
- 
- 📌 Example: README Section
- 
- ## 📦 Example: Using `flutter_video_trimmer`
+iOS Configuration
+For iOS, add the following keys in your Info.plist to request the required permissions for camera,
+microphone, and photo library access:
 
-Here’s a complete example showing how to build a custom video trimming screen using the `flutter_video_trimmer` package.
+📌 Example: README Section
+
+## 📦 Example: Using `flutter_video_trimmer`
+
+Here’s a complete example showing how to build a custom video trimming screen using
+the `flutter_video_trimmer` package.
 
 <details>
   <summary><strong>▶️ Example Code</strong></summary>
@@ -146,9 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> _getVideo(
-      ImageSource img,
-      ) async {
+  Future<void> _getVideo(ImageSource img,) async {
     final ImagePicker picker = ImagePicker();
     final pickedFile = await picker.pickVideo(
         source: img,
@@ -163,51 +157,55 @@ class _HomeScreenState extends State<HomeScreen> {
     debugPrint("Video Path: ${selectedVideo!.path}");
     videoPlayerController = VideoPlayerController.file(
       selectedVideo!,
-    )..initialize().then(
-          (_) {
-        if (videoPlayerController == null) {
-          return;
-        }
-        if (videoPlayerController!.value.duration.inSeconds >
-            _maxVideoDuration) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => VideoTrimmerScreen(
-                  file: selectedVideo!,
-                  maxDuration: _maxVideoDuration,
-                ),
-              )).then((value) {
-            if (value != null) {
-              selectedVideo = null;
-              videoPlayerController = null;
-              selectedVideo = File(value as String);
-              videoPlayerController = VideoPlayerController.file(
-                selectedVideo!,
-              )..initialize().then((_) {
-                setState(() {});
-              });
-            }
-          });
-        } else {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: const Text("Video is too short"),
-              content: const Text("Please choose another video"),
-              actions: <Widget>[
-                TextButton(
-                  child: const Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            ),
-          );
-        }
-      },
-    );
+    )
+      ..initialize().then(
+            (_) {
+          if (videoPlayerController == null) {
+            return;
+          }
+          if (videoPlayerController!.value.duration.inSeconds >
+              _maxVideoDuration) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      VideoTrimmerScreen(
+                        file: selectedVideo!,
+                        maxDuration: _maxVideoDuration,
+                      ),
+                )).then((value) {
+              if (value != null) {
+                selectedVideo = null;
+                videoPlayerController = null;
+                selectedVideo = File(value as String);
+                videoPlayerController = VideoPlayerController.file(
+                  selectedVideo!,
+                )
+                  ..initialize().then((_) {
+                    setState(() {});
+                  });
+              }
+            });
+          } else {
+            showDialog(
+              context: context,
+              builder: (context) =>
+                  AlertDialog(
+                    title: const Text("Video is too short"),
+                    content: const Text("Please choose another video"),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text("OK"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ),
+            );
+          }
+        },
+      );
   }
 
   Widget _videoWidget() {
@@ -277,8 +275,13 @@ class _HomeScreenState extends State<HomeScreen> {
           bottom: 18,
           textDirection: Directionality.of(context),
           child: Text(
-            "${videoPlayerController!.value.position.inSeconds} / ${videoPlayerController!.value.duration.inSeconds}",
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            "${videoPlayerController!.value.position.inSeconds} / ${videoPlayerController!.value
+                .duration.inSeconds}",
+            style: Theme
+                .of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(
               color: ColorSchemes.white,
             ),
           ),
@@ -366,7 +369,10 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
                 showDuration: true,
                 durationStyle: DurationStyle.FORMAT_HH_MM_SS,
                 durationTextStyle: const TextStyle(color: Colors.black),
-                viewerWidth: MediaQuery.of(context).size.width,
+                viewerWidth: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
                 onChangeStart: (value) => _startValue = value,
                 onChangeEnd: (value) {
                   _endValue = value;
@@ -405,7 +411,7 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
                       onPressed: () async {
                         if (!_progressVisibility) {
                           if (Duration(
-                                  milliseconds: (_endValue - _startValue).toInt())
+                              milliseconds: (_endValue - _startValue).toInt())
                               .inSeconds >
                               widget.maxDuration) {
                             _showMessageDialog();
@@ -428,21 +434,24 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
   void _showMessageDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        content: Text(
-          "Keep It Short And Sweet — Videos Are Best At ${widget.maxDuration} Seconds Or Less. Thanks!",
-        ),
-        actions: [
-          TextButton(
-            child: const Text("OK"),
-            onPressed: () => Navigator.pop(context),
-          )
-        ],
-      ),
+      builder: (context) =>
+          AlertDialog(
+            content: Text(
+              "Keep It Short And Sweet — Videos Are Best At ${widget
+                  .maxDuration} Seconds Or Less. Thanks!",
+            ),
+            actions: [
+              TextButton(
+                child: const Text("OK"),
+                onPressed: () => Navigator.pop(context),
+              )
+            ],
+          ),
     );
   }
 }
 ```
+
 Before using this example directly in a Flutter app, don't forget to add the flutter_video_trimmer &
 file_picker packages to your pubspec.yaml file.
 

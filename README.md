@@ -53,8 +53,12 @@ microphone, and photo library access:
 <details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
 <key>NSCameraUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
+
+
 <key>NSMicrophoneUsageDescription</key>
 <string>Used to capture audio for image picker plugin</string>
+
+
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
 </details>
