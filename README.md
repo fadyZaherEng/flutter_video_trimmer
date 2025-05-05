@@ -86,9 +86,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_video_trimmer/config/theme/color_schemes.dart';
@@ -274,17 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
         : const SizedBox.shrink();
   }
 }
-
-
-
-
-
-
-
-
-
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_video_trimmer/config/theme/color_schemes.dart';
