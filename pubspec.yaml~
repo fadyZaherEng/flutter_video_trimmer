@@ -3,7 +3,6 @@ description: "A video trimmer plugin for Flutter."
 repository: https://github.com/fadyZaherEng/FlutterTrimmerPackage
 homepage: https://github.com/fadyZaherEng/FlutterTrimmerPackage
 version: 3.0.4
-publish_to:
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
