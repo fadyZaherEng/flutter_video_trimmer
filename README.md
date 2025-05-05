@@ -23,7 +23,7 @@ Video File Management: Load and save video files seamlessly.
 Add the following dependency to your pubspec.yaml:
 
 dependencies:
-flutter_video_trimmer_ios_android: ^3.0.8
+flutter_video_trimmer_ios_android: ^3.0.9
 
 ## 🛠️ Configuration
 
@@ -47,24 +47,18 @@ camera and storage access:
 For iOS, add the following keys to your Info.plist to request the required permissions for camera,
 microphone, and photo library access:
 
-<details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
-<div>
+<details>
+<summary><strong>▶️ Show iOS Configuration</strong></summary>
+
+```info.plist
 <key>NSCameraUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
-</div>
-<div>
 <key>NSMicrophoneUsageDescription</key>
 <string>Used to capture audio for image picker plugin</string>
-</div>
-<div>
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
-</div>
+```
 </details>
-
-iOS Configuration
-For iOS, add the following keys in your Info.plist to request the required permissions for camera,
-microphone, and photo library access:
 
 📌 Example: README Section
 
