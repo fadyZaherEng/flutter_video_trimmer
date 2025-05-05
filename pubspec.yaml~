@@ -1,4 +1,4 @@
-name: flutter_video_trimmer
+name: flutter_video_trimmer_ios_android
 description: "A video trimmer plugin for Flutter."
 repository: https://github.com/fadyZaherEng/FlutterTrimmerPackage
 homepage: https://github.com/fadyZaherEng/FlutterTrimmerPackage
