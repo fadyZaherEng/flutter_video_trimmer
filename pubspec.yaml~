@@ -2,7 +2,6 @@ name: flutter_video_trimmer
 description: "A video trimmer plugin for Flutter."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 repository: https://github.com/fadyZaherEng/FlutterTrimmerPackage
-homepage:
 
 version: 1.0.0+1
 
