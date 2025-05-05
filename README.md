@@ -48,16 +48,18 @@ For iOS, add the following keys to your Info.plist to request the required permi
 microphone, and photo library access:
 
 <details> <summary><strong>▶️ Show iOS Configuration</strong></summary>
+<div>
 <key>NSCameraUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
-
-
+</div>
+<div>
 <key>NSMicrophoneUsageDescription</key>
 <string>Used to capture audio for image picker plugin</string>
-
-
+</div>
+<div>
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
+</div>
 </details>
 
 iOS Configuration
