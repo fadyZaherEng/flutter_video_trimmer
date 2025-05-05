@@ -1,0 +1,60 @@
+🎬 Video Trimmer
+A Flutter package for trimming videos with customizable features and intuitive controls.
+
+✨ Features
+Customizable Video Trimmer: Tailor the trimming interface to your needs.
+
+Two Trim Viewer Modes: Choose between fixed length and scrollable viewers.
+
+Video Playback Control: Play, pause, and scrub through your video.
+
+Video File Management: Load and save video files seamlessly.
+
+🚀 Getting Started
+Installation
+Add the following dependency to your pubspec.yaml:
+
+dependencies:
+flutter_video_trimmer: 0.0.1
+ 
+Android Configuration:
+add the following to your AndroidManifest.xml
+
+<uses-permission android:name="android.permission.CAMERA" />
+ <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+  
+
+iOS Configuration
+Add the following keys to your Info.plist:
+
+<key>NSCameraUsageDescription</key>
+<string>Used to demonstrate image picker plugin</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Used to capture audio for image picker plugin</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Used to demonstrate image picker plugin</string>
+
+
+📦 Usage Example
+
+Before using this example directly in a Flutter app, don't forget to add the flutter_video_trimmer & file_picker packages to your pubspec.yaml file.
+
+You can try out this example by replacing the entire content of main.dart file of a newly created Flutter project.
+
+
+📝 License
+MIT License
+
+Copyright (c) 2025 [Fady Zaher] 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
