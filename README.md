@@ -26,7 +26,7 @@ Check out the video trimming in action!
   </tr>
 </table>
 
-✨ Features
+## Features
 
 - 🚀 Customizable Video Trimmer: Tailor the trimming interface to your needs.
 - 🚀 Two Trim Viewer Modes: Choose between fixed length and scrollable viewers.

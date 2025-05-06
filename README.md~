@@ -104,7 +104,7 @@ post_install do |installer|
 end
 ```
 
-## 📦 Usage
+##  Usage
 
 Here’s a complete example showing how to build a custom video trimming screen using
 the `flutter_video_trimmer` package.
