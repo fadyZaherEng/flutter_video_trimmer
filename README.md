@@ -40,7 +40,7 @@ Check out the video trimming in action!
    In your `pubspec.yaml`:
 ```yaml
 dependencies:
-  flutter_video_trimmer_ios_android: ^4.0.3
+  flutter_video_trimmer_ios_android: ^4.0.4
 ```
 
 2. `Install Package` In your project:
