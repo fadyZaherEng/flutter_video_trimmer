@@ -13,8 +13,8 @@ A Flutter package for trimming videos with customizable features and intuitive c
 - [License](#license)
 
 ## Screenshots
-| ![screen1](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/screen1.jpg) | ![screen2](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/screen2.jpg) | ![trimmer_gif](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/trimmer_gif.gif) |
-|:--------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|
+| ![screen1](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/assets/screen1.jpg) | ![screen2](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/screen2.jpg) | ![trimmer_gif](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/trimmer_gif.gif) |
+|:---------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|
 
 ---
 ## 🎥 ScreenshotsAndDemo
