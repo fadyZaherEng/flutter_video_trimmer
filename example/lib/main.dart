@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Flutter Video Trimmer"),
+        title: const Text("Flutter FZ Video Trimmer"),
       ),
       body: Center(
         child: Column(

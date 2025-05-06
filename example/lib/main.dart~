@@ -288,9 +288,7 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
                 durationStyle: DurationStyle.FORMAT_HH_MM_SS,
                 durationTextStyle: const TextStyle(color: Colors.black),
                 viewerWidth: MediaQuery.of(context).size.width,
-                onChangeStart: (value) {
-                  _startValue = value;
-                },
+                onChangeStart: (value) => _startValue = value,
                 onChangeEnd: (value) {
                   _endValue = value;
                   if (_initialEndValue == 0.0) {
