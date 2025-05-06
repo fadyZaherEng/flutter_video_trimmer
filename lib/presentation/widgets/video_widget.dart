@@ -4,14 +4,14 @@ import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoWidget extends StatefulWidget {
-  final FlutterVideoTrimmer trimmer;
+  final FlutterVideoTrimmer flutterVideoTrimmer;
   final Color borderColor;
   final double borderWidth;
   final EdgeInsets padding;
 
   const VideoWidget({
     super.key,
-    required this.trimmer,
+    required this.flutterVideoTrimmer,
     this.borderColor = Colors.transparent,
     this.borderWidth = 0.0,
     this.padding = const EdgeInsets.all(0.0),
@@ -28,7 +28,7 @@ class _VideoWidgetState extends State<VideoWidget> {
   @override
   void initState() {
     super.initState();
-    _trimmer = widget.trimmer;
+    _trimmer = widget.flutterVideoTrimmer;
     _eventStream = _trimmer.eventStream;
 
     _eventStream.listen((event) {

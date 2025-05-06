@@ -111,6 +111,9 @@ the `flutter_video_trimmer` package.
 
 ## Usage flutter_video_trimmer_ios_android
 ```dart
+ VideoWidget(flutterVideoTrimmer: _flutterVideoTrimmer),
+```
+```dart
 TrimmerWidget(
   trimmer: flutterVideoTrimmer,
   viewerHeight: 60.0,
