@@ -171,10 +171,10 @@ packages:
   fz_trimmer:
     dependency: "direct main"
     description:
-      path: "C:\\Users\\Sefen\\flutter_video_trimmer"
-      relative: false
+      path: ".."
+      relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   html:
     dependency: transitive
     description:
