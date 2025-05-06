@@ -6,16 +6,14 @@
 ///
 /// * [externalStorageDirectory]
 ///
-class StorageDir {
-  const StorageDir._(this.index);
-
+class StorageDirection {
+  const StorageDirection._(this.index);
   final int index;
+  static const StorageDirection temporaryDirectory = StorageDirection._(0);
+  static const StorageDirection applicationDocumentsDirectory = StorageDirection._(1);
+  static const StorageDirection externalStorageDirectory = StorageDirection._(2);
 
-  static const StorageDir temporaryDirectory = StorageDir._(0);
-  static const StorageDir applicationDocumentsDirectory = StorageDir._(1);
-  static const StorageDir externalStorageDirectory = StorageDir._(2);
-
-  static const List<StorageDir> values = <StorageDir>[
+  static const List<StorageDirection> values = <StorageDirection>[
     temporaryDirectory,
     applicationDocumentsDirectory,
     externalStorageDirectory,

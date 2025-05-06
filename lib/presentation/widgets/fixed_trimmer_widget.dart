@@ -1,17 +1,17 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/duration_styles.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/editor_drag_type.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/trim_area_properties.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/durations.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/drager_editor.dart';
 import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_painter.dart';
 import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_properties.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trimmer_shape_props.dart';
 import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
- import 'package:video_player/video_player.dart';
+import 'package:video_player/video_player.dart';
 
 import 'fixed_thumbnail_widget.dart';
 
-class FixedTrimWidget extends StatefulWidget {
+class FixedTrimmerWidget extends StatefulWidget {
   /// Controls video trimming logic and playback.
   final FlutterVideoTrimmer trimmer;
 
@@ -49,15 +49,15 @@ class FixedTrimWidget extends StatefulWidget {
   final Function(bool isPlaying)? onPlaybackStateChanged;
 
   /// Customization options for the trim editor UI.
-  final TrimEditorProperties editorProperties;
+  final TrimEditorProperties editorProps;
 
   /// Customization options for the trim area's visual style.
-  final FixedTrimAreaProperties areaProperties;
+  final FixedTrimmerProps shapeProps;
 
   /// Callback triggered when all video thumbnails are loaded.
   final VoidCallback onThumbnailsLoaded;
 
-  const FixedTrimWidget({
+  const FixedTrimmerWidget({
     super.key,
     required this.trimmer,
     required this.onThumbnailsLoaded,
@@ -70,12 +70,12 @@ class FixedTrimWidget extends StatefulWidget {
     this.onStartChanged,
     this.onEndChanged,
     this.onPlaybackStateChanged,
-    this.editorProperties = const TrimEditorProperties(),
-    this.areaProperties = const FixedTrimAreaProperties(),
+    this.editorProps = const TrimEditorProperties(),
+    this.shapeProps = const FixedTrimmerProps(),
   });
 
   @override
-  State<FixedTrimWidget> createState() => _FixedTrimWidgetState();
+  State<FixedTrimmerWidget> createState() => _FixedTrimmerWidgetState();
 }
 
 /// A widget that provides a video trimmer interface.
@@ -99,7 +99,7 @@ class FixedTrimWidget extends StatefulWidget {
 /// - [areaProperties]: Style options for the trim area.
 /// - [onThumbnailsLoaded]: Called when thumbnail generation is complete.
 
-class _FixedTrimWidgetState extends State<FixedTrimWidget>
+class _FixedTrimmerWidgetState extends State<FixedTrimmerWidget>
     with TickerProviderStateMixin {
   final _trimmerAreaKey = GlobalKey();
 
@@ -135,7 +135,7 @@ class _FixedTrimWidgetState extends State<FixedTrimWidget>
   late Tween<double> _linearTween;
 
   FixedThumbnailWidget? thumbnailWidget;
-  EditorDragType _dragType = EditorDragType.left;
+  DraggerEditor _dragType = DraggerEditor.left;
   bool _allowDrag = true;
 
   @override
@@ -146,9 +146,9 @@ class _FixedTrimWidgetState extends State<FixedTrimWidget>
   }
 
   void _initEditorProperties() {
-    _startCircleSize = widget.editorProperties.circleSize;
-    _endCircleSize = widget.editorProperties.circleSize;
-    _borderRadius = widget.editorProperties.borderRadius;
+    _startCircleSize = widget.editorProps.circleSize;
+    _endCircleSize = widget.editorProps.circleSize;
+    _borderRadius = widget.editorProps.borderRadius;
     _thumbnailViewerH = widget.viewerHeight;
   }
 
@@ -171,10 +171,10 @@ class _FixedTrimWidgetState extends State<FixedTrimWidget>
     thumbnailWidget = FixedThumbnailWidget(
       videoFile: _videoFile!,
       videoDuration: _videoDuration,
-      fit: widget.areaProperties.thumbnailFit,
+      fit: widget.shapeProps.thumbnailFit,
       thumbnailHeight: _thumbnailViewerH,
       numberOfThumbnails: _numberOfThumbnails,
-      quality: widget.areaProperties.thumbnailQuality,
+      quality: widget.shapeProps.thumbnailQuality,
       onThumbnailLoadingComplete: widget.onThumbnailsLoaded,
     );
   }
@@ -248,44 +248,44 @@ class _FixedTrimWidgetState extends State<FixedTrimWidget>
     final startDiff = (_startPos.dx - localX).abs();
     final endDiff = (_endPos.dx - localX).abs();
 
-    _allowDrag = startDiff <= widget.editorProperties.sideTapSize ||
-        endDiff <= widget.editorProperties.sideTapSize;
+    _allowDrag = startDiff <= widget.editorProps.sideTapSize ||
+        endDiff <= widget.editorProps.sideTapSize;
 
     if (!_allowDrag) return;
 
-    if (localX <= _startPos.dx + widget.editorProperties.sideTapSize) {
-      _dragType = EditorDragType.left;
-    } else if (localX <= _endPos.dx - widget.editorProperties.sideTapSize) {
-      _dragType = EditorDragType.center;
+    if (localX <= _startPos.dx + widget.editorProps.sideTapSize) {
+      _dragType = DraggerEditor.left;
+    } else if (localX <= _endPos.dx - widget.editorProps.sideTapSize) {
+      _dragType = DraggerEditor.center;
     } else {
-      _dragType = EditorDragType.right;
+      _dragType = DraggerEditor.right;
     }
   }
 
   void _onDragUpdate(DragUpdateDetails details) {
     if (!_allowDrag) return;
 
-    if (_dragType == EditorDragType.left &&
+    if (_dragType == DraggerEditor.left &&
         _startPos.dx + details.delta.dx >= 0 &&
         _startPos.dx + details.delta.dx <= _endPos.dx &&
         (_endPos.dx - _startPos.dx - details.delta.dx <= maxLengthPixels!)) {
-      _startCircleSize = widget.editorProperties.circleSizeOnDrag;
+      _startCircleSize = widget.editorProps.circleSizeOnDrag;
       _startPos += details.delta;
       _onStartDragged();
-    } else if (_dragType == EditorDragType.center &&
+    } else if (_dragType == DraggerEditor.center &&
         _startPos.dx + details.delta.dx >= 0 &&
         _endPos.dx + details.delta.dx <= _thumbnailViewerW) {
-      _startCircleSize = widget.editorProperties.circleSizeOnDrag;
-      _endCircleSize = widget.editorProperties.circleSizeOnDrag;
+      _startCircleSize = widget.editorProps.circleSizeOnDrag;
+      _endCircleSize = widget.editorProps.circleSizeOnDrag;
       _startPos += details.delta;
       _endPos += details.delta;
       _onStartDragged();
       _onEndDragged();
-    } else if (_dragType == EditorDragType.right &&
+    } else if (_dragType == DraggerEditor.right &&
         _endPos.dx + details.delta.dx <= _thumbnailViewerW &&
         _endPos.dx + details.delta.dx >= _startPos.dx &&
         (_endPos.dx - _startPos.dx + details.delta.dx <= maxLengthPixels!)) {
-      _endCircleSize = widget.editorProperties.circleSizeOnDrag;
+      _endCircleSize = widget.editorProps.circleSizeOnDrag;
       _endPos += details.delta;
       _onEndDragged();
     }
@@ -317,12 +317,12 @@ class _FixedTrimWidgetState extends State<FixedTrimWidget>
 
   void _onDragEnd(DragEndDetails details) {
     setState(() {
-      _startCircleSize = widget.editorProperties.circleSize;
-      _endCircleSize = widget.editorProperties.circleSize;
+      _startCircleSize = widget.editorProps.circleSize;
+      _endCircleSize = widget.editorProps.circleSize;
     });
 
     final seekTo =
-        _dragType == EditorDragType.right ? _videoEndPos : _videoStartPos;
+        _dragType == DraggerEditor.right ? _videoEndPos : _videoStartPos;
     videoPlayerController.seekTo(Duration(milliseconds: seekTo.toInt()));
   }
 
@@ -382,15 +382,15 @@ class _FixedTrimWidgetState extends State<FixedTrimWidget>
               startCircleSize: _startCircleSize,
               endCircleSize: _endCircleSize,
               borderRadius: _borderRadius,
-              borderWidth: widget.editorProperties.borderWidth,
-              scrubberWidth: widget.editorProperties.scrubberWidth,
-              circlePaintColor: widget.editorProperties.circlePaintColor,
-              borderPaintColor: widget.editorProperties.borderPaintColor,
-              scrubberPaintColor: widget.editorProperties.scrubberPaintColor,
+              borderWidth: widget.editorProps.borderWidth,
+              scrubberWidth: widget.editorProps.scrubberWidth,
+              circlePaintColor: widget.editorProps.circlePaintColor,
+              borderPaintColor: widget.editorProps.borderPaintColor,
+              scrubberPaintColor: widget.editorProps.scrubberPaintColor,
             ),
             child: ClipRRect(
               borderRadius:
-                  BorderRadius.circular(widget.areaProperties.borderRadius),
+                  BorderRadius.circular(widget.shapeProps.borderRadius),
               child: Container(
                 key: _trimmerAreaKey,
                 color: Colors.grey[900],

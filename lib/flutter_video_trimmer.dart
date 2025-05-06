@@ -38,96 +38,6 @@ class FlutterVideoTrimmer {
     _eventController.add(TrimmerEvent.initialized);
   }
 
-  Future<String> _getStorageDirectory(
-      String folderName,
-      StorageDirection? storageDir,
-      ) async {
-    Directory baseDir;
-
-    switch (storageDir) {
-      case StorageDirection.temporaryDirectory:
-        baseDir = await getTemporaryDirectory();
-        break;
-      case StorageDirection.externalStorageDirectory:
-        baseDir = (await getExternalStorageDirectory())!;
-        break;
-      case StorageDirection.applicationDocumentsDirectory:
-      default:
-        baseDir = await getApplicationDocumentsDirectory();
-    }
-
-    final directory = Directory('${baseDir.path}/$folderName/');
-    if (!directory.existsSync()) {
-      await directory.create(recursive: true);
-    }
-    return directory.path;
-  }
-
-  Future<List<Uint8List>> _generateThumbnails({
-    required String videoPath,
-    required int fps,
-    required int width,
-    required int quality,
-    required double start,
-    required double end,
-  }) async {
-    if (fps > 30) throw ArgumentError('GIF FPS cannot be greater than 30');
-
-    final frameInterval = (1000 / fps).round();
-    final thumbnails = <Uint8List>[];
-
-    for (int timeMs = start.toInt();
-    timeMs <= end.toInt();
-    timeMs += frameInterval) {
-      final thumb = await VideoThumbnail.thumbnailData(
-        video: videoPath,
-        timeMs: timeMs,
-        imageFormat: ImageFormat.JPEG,
-        maxWidth: width,
-        quality: quality,
-      );
-      if (thumb != null) thumbnails.add(thumb);
-    }
-
-    return thumbnails;
-  }
-
-  Future<String> _generateGif({
-    required String videoPath,
-    required int fps,
-    required int width,
-    required int quality,
-    required double start,
-    required double end,
-    required String outputPath,
-  }) async {
-    final frames = await _generateThumbnails(
-      videoPath: videoPath,
-      fps: fps,
-      width: width,
-      quality: quality,
-      start: start,
-      end: end,
-    );
-
-    if (frames.isEmpty) throw Exception('No frames generated for GIF.');
-
-    final gifEncoder = img.GifEncoder(repeat: 0);
-    for (final bytes in frames) {
-      final frame = img.decodeImage(bytes);
-      if (frame != null) {
-        gifEncoder.addFrame(frame, duration: (100 / fps).round());
-      }
-    }
-
-    final gifBytes = gifEncoder.finish();
-    if (gifBytes == null) throw Exception('GIF encoding failed');
-
-    final file = File(outputPath);
-    await file.writeAsBytes(gifBytes);
-    return file.path;
-  }
-
   Future<void> saveTrimmedVideo({
     required double startValue,
     required double endValue,
@@ -196,6 +106,96 @@ class FlutterVideoTrimmer {
 
     await controller.play();
     return true;
+  }
+
+  Future<String> _getStorageDirectory(
+    String folderName,
+    StorageDirection? storageDir,
+  ) async {
+    Directory baseDir;
+
+    switch (storageDir) {
+      case StorageDirection.temporaryDirectory:
+        baseDir = await getTemporaryDirectory();
+        break;
+      case StorageDirection.externalStorageDirectory:
+        baseDir = (await getExternalStorageDirectory())!;
+        break;
+      case StorageDirection.applicationDocumentsDirectory:
+      default:
+        baseDir = await getApplicationDocumentsDirectory();
+    }
+
+    final directory = Directory('${baseDir.path}/$folderName/');
+    if (!directory.existsSync()) {
+      await directory.create(recursive: true);
+    }
+    return directory.path;
+  }
+
+  Future<List<Uint8List>> _generateThumbnails({
+    required String videoPath,
+    required int fps,
+    required int width,
+    required int quality,
+    required double start,
+    required double end,
+  }) async {
+    if (fps > 30) throw ArgumentError('GIF FPS cannot be greater than 30');
+
+    final frameInterval = (1000 / fps).round();
+    final thumbnails = <Uint8List>[];
+
+    for (int timeMs = start.toInt();
+        timeMs <= end.toInt();
+        timeMs += frameInterval) {
+      final thumb = await VideoThumbnail.thumbnailData(
+        video: videoPath,
+        timeMs: timeMs,
+        imageFormat: ImageFormat.JPEG,
+        maxWidth: width,
+        quality: quality,
+      );
+      if (thumb != null) thumbnails.add(thumb);
+    }
+
+    return thumbnails;
+  }
+
+  Future<String> _generateGif({
+    required String videoPath,
+    required int fps,
+    required int width,
+    required int quality,
+    required double start,
+    required double end,
+    required String outputPath,
+  }) async {
+    final frames = await _generateThumbnails(
+      videoPath: videoPath,
+      fps: fps,
+      width: width,
+      quality: quality,
+      start: start,
+      end: end,
+    );
+
+    if (frames.isEmpty) throw Exception('No frames generated for GIF.');
+
+    final gifEncoder = img.GifEncoder(repeat: 0);
+    for (final bytes in frames) {
+      final frame = img.decodeImage(bytes);
+      if (frame != null) {
+        gifEncoder.addFrame(frame, duration: (100 / fps).round());
+      }
+    }
+
+    final gifBytes = gifEncoder.finish();
+    if (gifBytes == null) throw Exception('GIF encoding failed');
+
+    final file = File(outputPath);
+    await file.writeAsBytes(gifBytes);
+    return file.path;
   }
 
   void dispose() {

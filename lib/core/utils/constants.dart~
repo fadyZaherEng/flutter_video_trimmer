@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+
 class Constants {
   static const String englishFontFamily = "Montserrat";
   static const String arabicFontFamily = "Almarai";

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TrimAreaProperties {
+class TrimmerShapeProps {
   /// * [thumbnailFit] for specifying the image fit type of each thumbnail image.
   /// By default it is set to `BoxFit.fitHeight`.
   ///
@@ -41,7 +41,7 @@ class TrimAreaProperties {
   final Widget? endIcon;
   final double borderRadius;
 
-  const TrimAreaProperties({
+  const TrimmerShapeProps({
     this.thumbnailFit = BoxFit.fitHeight,
     this.thumbnailQuality = 75,
     this.blurEdges = false,
@@ -51,13 +51,13 @@ class TrimAreaProperties {
     this.borderRadius = 4.0,
   });
 
-  factory TrimAreaProperties.fixed({
+  factory TrimmerShapeProps.fixed({
     BoxFit thumbnailFit,
     int thumbnailQuality,
     double borderRadius,
-  }) = FixedTrimAreaProperties;
+  }) = FixedTrimmerProps;
 
-  factory TrimAreaProperties.edgeBlur({
+  factory TrimmerShapeProps.edgeBlur({
     BoxFit thumbnailFit,
     int thumbnailQuality,
     bool blurEdges,
@@ -68,15 +68,7 @@ class TrimAreaProperties {
   }) = _TrimAreaPropertiesWithBlur;
 }
 
-class FixedTrimAreaProperties extends TrimAreaProperties {
-  const FixedTrimAreaProperties({
-    super.thumbnailFit,
-    super.thumbnailQuality,
-    super.borderRadius,
-  });
-}
-
-class _TrimAreaPropertiesWithBlur extends TrimAreaProperties {
+class _TrimAreaPropertiesWithBlur extends TrimmerShapeProps {
   _TrimAreaPropertiesWithBlur({
     super.thumbnailFit,
     super.thumbnailQuality,
@@ -86,16 +78,24 @@ class _TrimAreaPropertiesWithBlur extends TrimAreaProperties {
     endIcon,
     startIcon,
   }) : super(
-          blurEdges: true,
-          startIcon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Colors.white,
-            size: 16,
-          ),
-          endIcon: const Icon(
-            Icons.arrow_forward_ios_rounded,
-            color: Colors.white,
-            size: 16,
-          ),
-        );
+    blurEdges: true,
+    startIcon: const Icon(
+      Icons.arrow_back_ios_new_rounded,
+      color: Colors.white,
+      size: 16,
+    ),
+    endIcon: const Icon(
+      Icons.arrow_forward_ios_rounded,
+      color: Colors.white,
+      size: 16,
+    ),
+  );
+}
+
+class FixedTrimmerProps extends TrimmerShapeProps {
+  const FixedTrimmerProps({
+    super.thumbnailFit,
+    super.thumbnailQuality,
+    super.borderRadius,
+  });
 }

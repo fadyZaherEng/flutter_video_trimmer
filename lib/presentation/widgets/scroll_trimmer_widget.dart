@@ -4,17 +4,17 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/duration_styles.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/editor_drag_type.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/trim_area_properties.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/durations.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/drager_editor.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trimmer_shape_props.dart';
 import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_painter.dart';
 import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_properties.dart';
 import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
- import 'package:flutter_video_trimmer_ios_android/presentation/widgets/scrollable_thumbnail_widget.dart';
+ import 'package:flutter_video_trimmer_ios_android/presentation/widgets/scroll_thumbnail_widget.dart';
 import 'package:video_player/video_player.dart';
 
 /// Widget for displaying the video trimmer.
-class ScrollableTrimWidget extends StatefulWidget {
+class ScrollTrimmerWidget extends StatefulWidget {
   /// The Trimmer instance controlling the data.
   final FlutterVideoTrimmer flutterVideoTrimmer;
 
@@ -69,11 +69,11 @@ class ScrollableTrimWidget extends StatefulWidget {
   final TrimEditorProperties editorProperties;
 
   /// Properties for customizing the trim area.
-  final TrimAreaProperties areaProperties;
+  final TrimmerShapeProps areaProperties;
 
   final VoidCallback onThumbnailLoadingComplete;
 
-  const ScrollableTrimWidget({
+  const ScrollTrimmerWidget({
     super.key,
     required this.flutterVideoTrimmer,
     required this.maxVideoLength,
@@ -88,14 +88,14 @@ class ScrollableTrimWidget extends StatefulWidget {
     this.onChangePlaybackState,
     this.paddingFraction = 0.2,
     this.editorProperties = const TrimEditorProperties(),
-    this.areaProperties = const TrimAreaProperties(),
+    this.areaProperties = const TrimmerShapeProps(),
   });
 
   @override
-  State<ScrollableTrimWidget> createState() => _ScrollableTrimWidgetState();
+  State<ScrollTrimmerWidget> createState() => _ScrollTrimmerWidgetState();
 }
 
-class _ScrollableTrimWidgetState extends State<ScrollableTrimWidget>
+class _ScrollTrimmerWidgetState extends State<ScrollTrimmerWidget>
     with TickerProviderStateMixin {
   final _trimmerAreaKey = GlobalKey();
 
@@ -132,7 +132,7 @@ class _ScrollableTrimWidgetState extends State<ScrollableTrimWidget>
   double? fraction;
   double? maxLengthPixels;
 
-  ScrollableThumbnailWidget? thumbnailWidget;
+  ScrollThumbnailWidget? thumbnailWidget;
 
   Animation<double>? _scrubberAnimation;
   AnimationController? _animationController;
@@ -145,7 +145,7 @@ class _ScrollableTrimWidgetState extends State<ScrollableTrimWidget>
 
   /// Keep track of the drag type, e.g. whether the user drags the left, center or
   /// right part of the frame. Set this in [_onDragStart] when the dragging starts.
-  EditorDragType _dragType = EditorDragType.left;
+  DraggerEditor _dragType = DraggerEditor.left;
 
   /// Whether the dragging is allowed. Dragging is ignore if the user's gesture is outside
   /// of the frame, to make the UI more realistic.
@@ -199,7 +199,7 @@ class _ScrollableTrimWidgetState extends State<ScrollableTrimWidget>
             .ceil();
 
         _numberOfThumbnails = numberOfThumbnailsTotal;
-        final thumbnailWidget = ScrollableThumbnailWidget(
+        final thumbnailWidget = ScrollThumbnailWidget(
           scrollController: _scrollController,
           videoFile: _videoFile!,
           videoDuration: _videoDuration,
@@ -476,12 +476,12 @@ class _ScrollableTrimWidgetState extends State<ScrollableTrimWidget>
     // Now we determine which part is dragged
     if (details.localPosition.dx <=
         _startPos.dx + widget.editorProperties.sideTapSize) {
-      _dragType = EditorDragType.left;
+      _dragType = DraggerEditor.left;
     } else if (details.localPosition.dx <=
         _endPos.dx - widget.editorProperties.sideTapSize) {
-      _dragType = EditorDragType.center;
+      _dragType = DraggerEditor.center;
     } else {
-      _dragType = EditorDragType.right;
+      _dragType = DraggerEditor.right;
     }
   }
 
@@ -491,7 +491,7 @@ class _ScrollableTrimWidgetState extends State<ScrollableTrimWidget>
     // log('Local pos: ${details.localPosition}');
     _localPosition = details.localPosition.dx;
 
-    if (_dragType == EditorDragType.left) {
+    if (_dragType == DraggerEditor.left) {
       _startCircleSize = widget.editorProperties.circleSizeOnDrag;
       if ((_startPos.dx + details.delta.dx >= 0) &&
           (_startPos.dx + details.delta.dx <= _endPos.dx) &&
@@ -499,7 +499,7 @@ class _ScrollableTrimWidgetState extends State<ScrollableTrimWidget>
         _startPos += details.delta;
         _onStartDragged();
       }
-    } else if (_dragType == EditorDragType.center) {
+    } else if (_dragType == DraggerEditor.center) {
       _startCircleSize = widget.editorProperties.circleSizeOnDrag;
       _endCircleSize = widget.editorProperties.circleSizeOnDrag;
       if ((_startPos.dx + details.delta.dx >= 0) &&
@@ -564,7 +564,7 @@ class _ScrollableTrimWidgetState extends State<ScrollableTrimWidget>
     setState(() {
       _startCircleSize = widget.editorProperties.circleSize;
       _endCircleSize = widget.editorProperties.circleSize;
-      if (_dragType == EditorDragType.right) {
+      if (_dragType == DraggerEditor.right) {
         videoPlayerController
             .seekTo(Duration(milliseconds: _videoEndPos.toInt()));
       } else {

@@ -6,7 +6,7 @@ import 'package:flutter_video_trimmer_ios_android/core/utils/trimmer_utils.dart'
 import 'package:transparent_image/transparent_image.dart';
 
 /// A scrollable view displaying video thumbnails frame by frame.
-class ScrollableThumbnailWidget extends StatelessWidget {
+class ScrollThumbnailWidget extends StatelessWidget {
   /// The video file from which thumbnails are generated.
   final File videoFile;
 
@@ -42,7 +42,7 @@ class ScrollableThumbnailWidget extends StatelessWidget {
   /// - [scrollController] is the scroll controller for the scrollable thumbnail view.
   /// - [onThumbnailLoadingComplete] is the callback function that is called when thumbnail loading is complete.
   /// - [quality] is the quality of the generated thumbnails, ranging from 0 to 100. Defaults to 75.
-  const ScrollableThumbnailWidget({
+  const ScrollThumbnailWidget({
     super.key,
     required this.videoFile,
     required this.videoDuration,

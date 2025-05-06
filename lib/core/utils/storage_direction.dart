@@ -1,11 +1,3 @@
-/// Supported storage locations.
-///
-/// * [temporaryDirectory]
-///
-/// * [applicationDocumentsDirectory]
-///
-/// * [externalStorageDirectory]
-///
 class StorageDirection {
   const StorageDirection._(this.index);
   final int index;

@@ -1,59 +1,70 @@
 🎬 Video Trimmer
 A Flutter package for trimming videos with customizable features and intuitive controls.
 
+## 📖 Table of Contents
+- [ScreenshotsAndDemo](#screenshotsAndDemo)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+    - [Trimmer](#trimmer)
+ - [Example](#example)
+- [Dependencies Used](#dependencies-used)
+- [About the Developer](#about-the-developer)
+- [License](#license)
+
+## Screenshots
+| ![screen1](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/screen1.jpg) | ![screen2](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/screen2.jpg) | ![trimmer_gif](https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/trimmer_gif.gif) |
+|:--------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|
+
+---
 ## 🎥 Demo
 Check out the video trimming in action!
 
 <table>
   <tr>
-    <td><img src="https://github.com/fadyZaherEng/FlutterTrimmerPackage/raw/master/assets/trimmer_gif.gif" alt="Trimmer Gif" width="400"></td>
-    <td><img src="https://github.com/fadyZaherEng/FlutterTrimmerPackage/raw/master/assets/video.mp4" alt="Trimmer Video" width="400"></td>
+     <td><img src="https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/video.mp4" alt="Trimmer Video" width="400"></td>
   </tr>
 </table>
 
 ✨ Features
-Customizable Video Trimmer: Tailor the trimming interface to your needs.
 
-Two Trim Viewer Modes: Choose between fixed length and scrollable viewers.
+- 🚀 Customizable Video Trimmer: Tailor the trimming interface to your needs.
+- 🚀 Two Trim Viewer Modes: Choose between fixed length and scrollable viewers.
+- 🚀 Video Playback Control: Play, pause, and scrub through your video.
+- 🚀 Video File Management: Load and save video files seamlessly.
 
-Video Playback Control: Play, pause, and scrub through your video.
+---
+## Getting Started
 
-Video File Management: Load and save video files seamlessly.
-
-📌 README Section with Configuration Details
-🚀 Getting Started Installation
-
-Add the following dependency to your pubspec.yaml:
-
+1. **Add dependency:**
+   In your `pubspec.yaml`:
+```yaml
 dependencies:
-flutter_video_trimmer_ios_android: ^4.0.2
+  flutter_video_trimmer_ios_android: ^4.0.2
+```
 
-## 🛠️ Configuration
+2. `Install Package` In your project:
+```
+flutter pub get
+```
 
-### Android Configuration
-
-For Android, you need to modify the `AndroidManifest.xml` to request the required permissions for
-camera and storage access:
-
-<details>
-  <summary><strong>▶️ Show Android Configuration</strong></summary>
-
+3. `Android Configuration:` In your AndroidManifest.xml:
 ```xml
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 ```
-</details>
 
-🍎 iOS Configuration
-For iOS, add the following keys to your Info.plist to request the required permissions for camera,
-microphone, and photo library access:
+in /android/app/build.gradle
+```
+minSdk = 24
+// Prefered 
+compileSdk = 34
+```
 
-<details>
-<summary><strong>▶️ Show iOS Configuration</strong></summary>
-
-```info.plist
+4. `iOS Configuration:` In your iOS Info.plist, add:
+```
 <key>NSCameraUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
 <key>NSMicrophoneUsageDescription</key>
@@ -61,18 +72,62 @@ microphone, and photo library access:
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Used to demonstrate image picker plugin</string>
 ```
-</details>
+In Your Podfile
 
-📌 Example: README Section
+```
+platform :ios, '12.0'
+```
+```
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    flutter_additional_ios_build_settings(target)
+    target.build_configurations.each do |config|
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+        '$(inherited)',
+        ## dart: PermissionGroup.camera
+        'PERMISSION_CAMERA=1',
 
-## 📦 Example: Using `flutter_video_trimmer`
+        ## dart: PermissionGroup.microphone
+        'PERMISSION_MICROPHONE=1',
+ 
+        ## dart: PermissionGroup.photos
+        'PERMISSION_PHOTOS=1',
+
+        ## dart: [PermissionGroup.location, PermissionGroup.locationAlways, PermissionGroup.locationWhenInUse]
+         'PERMISSION_LOCATION=1',
+
+        ## dart: PermissionGroup.mediaLibrary
+        'PERMISSION_MEDIA_LIBRARY=1',
+      ]
+    end
+  end
+end
+```
+
+## 📦 Example: Using `flutter_video_trimmer_ios_android`
 
 Here’s a complete example showing how to build a custom video trimming screen using
 the `flutter_video_trimmer` package.
 
-<details>
-  <summary><strong>▶️ Example Code</strong></summary>
-</details>
+## Usage flutter_video_trimmer_ios_android
+```dart
+TrimmerWidget(
+  trimmer: flutterVideoTrimmer,
+  viewerHeight: 60.0,
+  showDuration: true,
+  durationStyle: DurationStyle.FORMAT_HH_MM_SS,
+  durationTextStyle: const TextStyle(color: Colors.black),
+  viewerWidth: MediaQuery.of(context).size.width,
+  onChangeStart: (value) => _startValue = value,
+  onChangeEnd: (value) {
+  _endValue = value;
+  if (_initialEndValue == 0.0) _initialEndValue = value;
+  },
+  onChangePlaybackState: (value) =>
+setState(() => _isPlaying = value), 
+),
+```
+## Example flutter_video_trimmer_ios_android
 
 ```dart
 import 'dart:io';
@@ -88,7 +143,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Flutter Video Trimmer",
+      title: "Flutter Video Trimmer Android and Ios",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
@@ -261,8 +316,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         InkWell(
-          onTap: () {},
-          child: Icon(
+           child: Icon(
             videoPlayerController!.value.isPlaying
                 ? Icons.pause
                 : Icons.play_arrow,
@@ -295,10 +349,10 @@ class _HomeScreenState extends State<HomeScreen> {
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_video_trimmer/config/theme/color_schemes.dart';
-import 'package:flutter_video_trimmer/core/utils/duration_styles.dart';
+import 'package:flutter_video_trimmer/core/utils/durations.dart';
 import 'package:flutter_video_trimmer/flutter_video_trimmer.dart';
-import 'package:flutter_video_trimmer/presentation/widgets/trim_viewer_widget.dart';
-import 'package:flutter_video_trimmer/presentation/widgets/video_viewer_widget.dart';
+import 'package:flutter_video_trimmer/presentation/widgets/trimmer_widget.dart';
+import 'package:flutter_video_trimmer/presentation/widgets/video_widget.dart';
 
 class VideoTrimmerScreen extends StatefulWidget {
   final File file;
@@ -363,8 +417,8 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
             const SizedBox(height: 10),
             SizedBox(
               height: 100,
-              child: TrimViewer(
-                trimmer: _trimmer,
+              child: TrimmerWidget(
+                flutterVideoTrimmer: _trimmer,
                 viewerHeight: 60.0,
                 showDuration: true,
                 durationStyle: DurationStyle.FORMAT_HH_MM_SS,
@@ -451,26 +505,38 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
   }
 }
 ```
+## Example
+[You Can Find The Full Code Here](https://github.com/fadyZaherEng/flutterVideoTrimmer)
 
+## Dependencies Used This package uses (You do not have to import them):
+    flutter_native_video_trimmer: 
+    transparent_image: 
+    image: 
+    video_thumbnail: 
+    video_player: 
+    path_provider: 
+    intl: 
+    path: 
+```
 Before using this example directly in a Flutter app, don't forget to add the flutter_video_trimmer_ios_android &
 image_picker packages to your pubspec.yaml file.
-
 You can try out this example by replacing the entire content of main.dart file of a newly created
 Flutter project.
+```
 
+## About the Developer
+Hello! 👋 I'm Fady Zaher, a Mid Level Flutter Developer with extensive experience in building high-quality mobile applications.
+- 📧 Email: fedo.zaher@gmail.com
 
 📝 License
 MIT License
 
 Copyright (c) 2025 [Fady Zaher]
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.

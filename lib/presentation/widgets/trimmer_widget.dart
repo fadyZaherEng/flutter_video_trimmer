@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/duration_styles.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/trim_area_properties.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/durations.dart';
+import 'package:flutter_video_trimmer_ios_android/core/utils/trimmer_shape_props.dart';
 import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_properties.dart';
 import 'package:flutter_video_trimmer_ios_android/core/utils/viewer_type_enum.dart';
 import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
-import 'package:flutter_video_trimmer_ios_android/presentation/widgets/fixed_trim_widget.dart';
-import 'package:flutter_video_trimmer_ios_android/presentation/widgets/scrollable_trim_widget.dart';
+import 'package:flutter_video_trimmer_ios_android/presentation/widgets/fixed_trimmer_widget.dart';
+import 'package:flutter_video_trimmer_ios_android/presentation/widgets/scroll_trimmer_widget.dart';
 
-class TrimViewer extends StatefulWidget {
-  /// The Trimmer controller instance.
-  final FlutterVideoTrimmer trimmer;
+class TrimmerWidget extends StatefulWidget {
+   final FlutterVideoTrimmer flutterVideoTrimmer;
 
   // --- Layout & Style ---
   final double viewerWidth;
@@ -23,7 +22,7 @@ class TrimViewer extends StatefulWidget {
   // --- Trim & Editor Properties ---
   final Duration maxVideoLength;
   final TrimEditorProperties editorProperties;
-  final TrimAreaProperties areaProperties;
+  final TrimmerShapeProps areaProperties;
 
   // --- Callbacks ---
   final Function(double startValue)? onChangeStart;
@@ -38,9 +37,9 @@ class TrimViewer extends StatefulWidget {
   ///
   /// Throws an error if `type == ViewerType.scrollable` and the video
   /// duration is shorter than `maxVideoLength + padding`.
-  const TrimViewer({
+  const TrimmerWidget({
     super.key,
-    required this.trimmer,
+    required this.flutterVideoTrimmer,
     this.type = ViewerType.auto,
     this.viewerWidth = 400,
     this.viewerHeight = 50,
@@ -50,7 +49,7 @@ class TrimViewer extends StatefulWidget {
     this.durationTextStyle = const TextStyle(color: Colors.white),
     this.durationStyle = DurationStyle.FORMAT_HH_MM_SS,
     this.editorProperties = const TrimEditorProperties(),
-    this.areaProperties = const TrimAreaProperties(),
+    this.areaProperties = const TrimmerShapeProps(),
     this.onChangeStart,
     this.onChangeEnd,
     this.onChangePlaybackState,
@@ -58,20 +57,20 @@ class TrimViewer extends StatefulWidget {
   });
 
   @override
-  State<TrimViewer> createState() => _TrimViewerState();
+  State<TrimmerWidget> createState() => _TrimmerWidgetState();
 }
 
-class _TrimViewerState extends State<TrimViewer> with TickerProviderStateMixin {
+class _TrimmerWidgetState extends State<TrimmerWidget> with TickerProviderStateMixin {
   bool? _isScrollableAllowed;
 
   @override
   void initState() {
     super.initState();
 
-    widget.trimmer.eventStream.listen((event) {
+    widget.flutterVideoTrimmer.eventStream.listen((event) {
       if (event == TrimmerEvent.initialized) {
         final totalDuration =
-            widget.trimmer.videoPlayerController?.value.duration;
+            widget.flutterVideoTrimmer.videoPlayerController?.value.duration;
         final maxLength = widget.maxVideoLength;
 
         final paddedLengthMs = maxLength.inMilliseconds +
@@ -101,8 +100,8 @@ class _TrimViewerState extends State<TrimViewer> with TickerProviderStateMixin {
         (widget.type == ViewerType.auto && _isScrollableAllowed == true);
 
     final viewer = useScrollable
-        ? ScrollableTrimWidget(
-            flutterVideoTrimmer: widget.trimmer,
+        ? ScrollTrimmerWidget(
+            flutterVideoTrimmer: widget.flutterVideoTrimmer,
             maxVideoLength: widget.maxVideoLength,
             viewerWidth: widget.viewerWidth,
             viewerHeight: widget.viewerHeight,
@@ -118,8 +117,8 @@ class _TrimViewerState extends State<TrimViewer> with TickerProviderStateMixin {
             onThumbnailLoadingComplete:
                 widget.onThumbnailLoadingComplete ?? () {},
           )
-        : FixedTrimWidget(
-            trimmer: widget.trimmer,
+        : FixedTrimmerWidget(
+            trimmer: widget.flutterVideoTrimmer,
             maxVideoLength: widget.maxVideoLength,
             viewerWidth: widget.viewerWidth,
             viewerHeight: widget.viewerHeight,
@@ -129,8 +128,8 @@ class _TrimViewerState extends State<TrimViewer> with TickerProviderStateMixin {
             onStartChanged: widget.onChangeStart,
             onEndChanged: widget.onChangeEnd,
             onPlaybackStateChanged: widget.onChangePlaybackState,
-            editorProperties: widget.editorProperties,
-            areaProperties: FixedTrimAreaProperties(
+            editorProps: widget.editorProperties,
+            shapeProps: FixedTrimmerProps(
               thumbnailFit: widget.areaProperties.thumbnailFit,
               thumbnailQuality: widget.areaProperties.thumbnailQuality,
               borderRadius: widget.areaProperties.borderRadius,
