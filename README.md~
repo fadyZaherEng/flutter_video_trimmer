@@ -2,7 +2,7 @@
 A Flutter package for trimming videos with customizable features and intuitive controls.
 
 ## 📖 Table of Contents
-- [ScreenshotsAndDemo](#screenshotsAndDemo)
+- [Screenshots](#Screenshots)
 - [Features](#Features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)

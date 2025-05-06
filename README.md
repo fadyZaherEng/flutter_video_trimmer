@@ -131,8 +131,7 @@ setState(() => _isPlaying = value),
 ),
 ```
 ## Example
-## flutter_video_trimmer_ios_android
-
+ 
 ```dart
 import 'dart:io';
 
@@ -156,7 +155,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+```
+```dart
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -349,7 +349,8 @@ class _HomeScreenState extends State<HomeScreen> {
         : const SizedBox.shrink();
   }
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+``` 
+```dart
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_video_trimmer/config/theme/color_schemes.dart';
