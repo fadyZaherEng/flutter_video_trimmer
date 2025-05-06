@@ -517,6 +517,7 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
     path_provider: 
     intl: 
     path: 
+
 ```
 Before using this example directly in a Flutter app, don't forget to add the flutter_video_trimmer_ios_android &
 image_picker packages to your pubspec.yaml file.
