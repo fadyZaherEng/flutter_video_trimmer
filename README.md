@@ -12,19 +12,17 @@ A Flutter package for trimming videos with customizable features and intuitive c
 - [About the Developer](#about-the-developer)
 - [License](#license)
 
+## 🎥 Check out the video trimming in action!
+## Screens
+| ![Screen 1](https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/1.jpg) | ![Screen 2](https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/2.jpg) |  
+|:-----------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:| 
+
 ## Screenshots
-| ![Screen 1](https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/1.jpg) | ![Screen 2](https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/2.jpg) | ![Gif](https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/trimmer_gif.gif) |
-|:-----------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|
+| ![Screen 1](https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/video.mp4) | ![Screen 2](https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/trimmer_gif.gif) | 
+|:---------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:| 
 
 ---
-## 🎥 Check out the video trimming in action!
-
-<table>
-  <tr>
-     <td><img src="https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/video.mp4" alt="Trimmer Video" width="400"></td>
-  </tr>
-</table>
-
+ 
 ## Features
 
 - 🚀 Customizable Video Trimmer: Tailor the trimming interface to your needs.
