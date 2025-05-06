@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/durations.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/trimmer_shape_props.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_properties.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/viewer_type_enum.dart';
-import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
-import 'package:flutter_video_trimmer_ios_android/presentation/widgets/fixed_trimmer_widget.dart';
-import 'package:flutter_video_trimmer_ios_android/presentation/widgets/scroll_trimmer_widget.dart';
+import 'package:fz_trimmer/core/utils/durations.dart';
+import 'package:fz_trimmer/core/utils/trimmer_shape_props.dart';
+import 'package:fz_trimmer/core/utils/trim_editor_properties.dart';
+import 'package:fz_trimmer/core/utils/viewer_type_enum.dart';
+import 'package:fz_trimmer/flutter_video_trimmer.dart';
+import 'package:fz_trimmer/presentation/widgets/fixed_trimmer_widget.dart';
+import 'package:fz_trimmer/presentation/widgets/scroll_trimmer_widget.dart';
 
 class TrimmerWidget extends StatefulWidget {
    final FlutterVideoTrimmer flutterVideoTrimmer;

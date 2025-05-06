@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/viewer_type_enum.dart';
-import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
+import 'package:fz_trimmer/core/utils/viewer_type_enum.dart';
+import 'package:fz_trimmer/flutter_video_trimmer.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoWidget extends StatefulWidget {

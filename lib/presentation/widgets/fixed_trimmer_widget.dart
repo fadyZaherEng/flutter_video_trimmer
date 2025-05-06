@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/durations.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/drager_editor.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_painter.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/trim_editor_properties.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/trimmer_shape_props.dart';
-import 'package:flutter_video_trimmer_ios_android/flutter_video_trimmer.dart';
+import 'package:fz_trimmer/core/utils/durations.dart';
+import 'package:fz_trimmer/core/utils/drager_editor.dart';
+import 'package:fz_trimmer/core/utils/trim_editor_painter.dart';
+import 'package:fz_trimmer/core/utils/trim_editor_properties.dart';
+import 'package:fz_trimmer/core/utils/trimmer_shape_props.dart';
+import 'package:fz_trimmer/flutter_video_trimmer.dart';
 import 'package:video_player/video_player.dart';
 
 import 'fixed_thumbnail_widget.dart';
