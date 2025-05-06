@@ -21,7 +21,7 @@ A Flutter package for trimming videos with customizable features and intuitive c
 
 <table>
   <tr>
-     <td><img src="https://raw.githubusercontent.com/fadyZaherEng/FlutterTrimmerPackage/main/assets/video.mp4" alt="Trimmer Video" width="400"></td>
+     <td><img src="https://raw.githubusercontent.com/fadyZaherEng/flutter_video_trimmer/master/assets/video.mp4" alt="Trimmer Video" width="400"></td>
   </tr>
 </table>
 
