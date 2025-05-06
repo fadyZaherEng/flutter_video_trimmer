@@ -532,12 +532,18 @@ Flutter project.
 Hello! 👋 I'm Fady Zaher, a Mid Level Flutter Developer with extensive experience in building high-quality mobile applications.
 - 📧 Email: fedo.zaher@gmail.com
 ---
-
 If you like this package, feel free to ⭐️ the repo and share it!
 
 📝 License
 MIT License
 
 Copyright (c) 2025 [Fady Zaher]
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/fadyZaherEng/flutterVideoTrimmer/blob/LICENSE) file for details.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
