@@ -111,7 +111,7 @@ the `flutter_video_trimmer` package.
 
 ## Usage flutter_video_trimmer_ios_android
 ```dart
- VideoWidget(trimmer: _trimmer),
+ VideoWidget(flutterVideoTrimmer: _flutterVideoTrimmer),
 ```
 ```dart
 TrimmerWidget(
