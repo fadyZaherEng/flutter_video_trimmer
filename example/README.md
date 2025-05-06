@@ -7,7 +7,7 @@ A Flutter package for trimming videos with customizable features and intuitive c
 - [Getting Started](#getting-started)
 - [Usage](#usage)
     - [Trimmer](#trimmer)
- - [Example](#example)
+- [Example](#example)
 - [Dependencies Used](#dependencies-used)
 - [About the Developer](#about-the-developer)
 - [License](#license)
@@ -22,7 +22,7 @@ A Flutter package for trimming videos with customizable features and intuitive c
  |:---------------------------------------------------------------------------------------------------------------:| 
 
 ---
- 
+
 ## Features
 
 - 🚀 Customizable Video Trimmer: Tailor the trimming interface to your needs.
@@ -37,7 +37,7 @@ A Flutter package for trimming videos with customizable features and intuitive c
    In your `pubspec.yaml`:
 ```yaml
 dependencies:
-  fz_trimmer: ^0.0.2
+  fz_trimmer: ^0.0.1
 ```
 
 2. `Install Package` In your project:
@@ -104,7 +104,7 @@ end
 ##  Usage
 
 Here’s a complete example showing how to build a custom video trimming screen using
-the `tz_trimmer` package.
+the `flutter_video_trimmer` package.
 
 ## usage flutter_video_trimmer_ios_android
 ```dart
@@ -129,7 +129,7 @@ setState(() => _isPlaying = value),
 ),
 ```
 ## Example
- 
+
 ```dart
 import 'dart:io';
 
@@ -318,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         InkWell(
-           child: Icon(
+          child: Icon(
             videoPlayerController!.value.isPlaying
                 ? Icons.pause
                 : Icons.play_arrow,
@@ -522,7 +522,7 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
     path: 
 
 ```
-Before using this example directly in a Flutter app, don't forget to add the tz_trimmer &
+Before using this example directly in a Flutter app, don't forget to add the flutter_video_trimmer_ios_android &
 image_picker packages to your pubspec.yaml file.
 You can try out this example by replacing the entire content of main.dart file of a newly created
 Flutter project.
@@ -538,7 +538,6 @@ If you like this package, feel free to ⭐️ the repo and share it!
 MIT License
 
 Copyright (c) 2025 [Fady Zaher]
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
