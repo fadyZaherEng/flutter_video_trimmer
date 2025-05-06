@@ -539,5 +539,5 @@ If you like this package, feel free to ⭐️ the repo and share it!
 MIT License
 
 Copyright (c) 2025 [Fady Zaher]
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/fadyZaherEng/flutterVideoTrimmer/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/fadyZaherEng/flutterVideoTrimmer/blob/LICENSE) file for details.
 
