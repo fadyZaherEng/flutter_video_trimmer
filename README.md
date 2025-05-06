@@ -112,20 +112,18 @@ the `tz_trimmer` package.
 ```
 ## Trimmer
 ```dart
-TrimmerWidget(
-  trimmer: flutterVideoTrimmer,
-  viewerHeight: 60.0,
-  showDuration: true,
-  durationStyle: DurationStyle.FORMAT_HH_MM_SS,
-  durationTextStyle: const TextStyle(color: Colors.black),
-  viewerWidth: MediaQuery.of(context).size.width,
-  onChangeStart: (value) => _startValue = value,
-  onChangeEnd: (value) {
-  _endValue = value;
-  if (_initialEndValue == 0.0) _initialEndValue = value;
-  },
-  onChangePlaybackState: (value) =>
-setState(() => _isPlaying = value), 
+ SizedBox(
+height: 100,
+child: TrimmerWidget(
+flutterVideoTrimmer: _flutterVideoTrimmer,
+ viewerWidth: MediaQuery.of(context).size.width,
+onChangeStart: (value) => _startValue = value,
+onChangeEnd: (value) {
+_endValue = value;
+if (_initialEndValue == 0.0) {
+_initialEndValue = value;
+}
+}, 
 ),
 ```
 ## Example
