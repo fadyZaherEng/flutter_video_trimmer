@@ -10,7 +10,7 @@ import 'package:fz_trimmer/core/utils/trimmer_shape_props.dart';
 import 'package:fz_trimmer/core/utils/trim_editor_painter.dart';
 import 'package:fz_trimmer/core/utils/trim_editor_properties.dart';
 import 'package:fz_trimmer/flutter_video_trimmer.dart';
- import 'package:fz_trimmer/presentation/widgets/scroll_thumbnail_widget.dart';
+import 'package:fz_trimmer/presentation/widgets/scroll_thumbnail_widget.dart';
 import 'package:video_player/video_player.dart';
 
 /// Widget for displaying the video trimmer.
@@ -182,9 +182,9 @@ class _ScrollTrimmerWidgetState extends State<ScrollTrimmerWidget>
         final paddingFraction = widget.paddingFraction;
         // trimAreaTime = maxVideoLength + (paddingFraction * maxVideoLength) * 2
         final trimAreaDuration = Duration(
-            milliseconds: (maxVideoLength.inMilliseconds +
-                ((paddingFraction * maxVideoLength.inMilliseconds) * 2)
-                    .toInt()));
+          milliseconds: (maxVideoLength.inMilliseconds +
+              ((paddingFraction * maxVideoLength.inMilliseconds) * 2).toInt()),
+        );
         final remainingDuration = totalDuration - trimAreaDuration;
         _remainingDuration = remainingDuration.inMilliseconds;
         final trimAreaLength = _thumbnailViewerW;
@@ -391,7 +391,7 @@ class _ScrollTrimmerWidgetState extends State<ScrollTrimmerWidget>
                 child: Row(
                   children: [
                     Container(
-                      color: Colors.red.withOpacity(0.6),
+                      color: Colors.red,
                       height: _thumbnailViewerH,
                       width: (_thumbnailViewerW == 0.0
                               ? widget.viewerWidth
@@ -400,7 +400,7 @@ class _ScrollTrimmerWidgetState extends State<ScrollTrimmerWidget>
                     ),
                     const Spacer(),
                     Container(
-                      color: Colors.red.withOpacity(0.6),
+                      color: Colors.red,
                       height: _thumbnailViewerH,
                       width: (_thumbnailViewerW == 0.0
                               ? widget.viewerWidth

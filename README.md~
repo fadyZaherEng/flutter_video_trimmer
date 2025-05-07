@@ -6,7 +6,7 @@ A Flutter package for trimming videos with customizable features and intuitive c
 - [Features](#Features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-    - [Trimmer](#trimmer)
+    - [tzTrimmer](#trimmer)
  - [Example](#example)
 - [Dependencies Used](#dependencies-used)
 - [About the Developer](#about-the-developer)
@@ -37,7 +37,7 @@ A Flutter package for trimming videos with customizable features and intuitive c
    In your `pubspec.yaml`:
 ```yaml
 dependencies:
-  fz_trimmer: ^0.0.3
+  fz_trimmer: ^0.0.4
 ```
 
 2. `Install Package` In your project:
@@ -106,11 +106,11 @@ end
 Here’s a complete example showing how to build a custom video trimming screen using
 the `tz_trimmer` package.
 
-## usage flutter_video_trimmer_ios_android
+## usage tzTrimmer
 ```dart
  VideoWidget(flutterVideoTrimmer: _flutterVideoTrimmer),
 ```
-## Trimmer
+## tzTrimmer
 ```dart
 SizedBox(
   height: 100,
@@ -128,225 +128,7 @@ SizedBox(
 ),
 ```
 ## Example
- 
-```dart
-import 'dart:io';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_video_trimmer_test/home_screen.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Flutter Video Trimmer Android and Ios",
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
-      home: const HomeScreen(),
-    );
-  }
-}
-```
-```dart
-import 'dart:io';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_video_trimmer/config/theme/color_schemes.dart';
-import 'package:flutter_video_trimmer_test/video_trimmer_screen.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:video_player/video_player.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  File? selectedVideo;
-  VideoPlayerController? videoPlayerController;
-  final int _maxVideoDuration = 10;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Flutter Video Trimmer"),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            ElevatedButton(
-              child: const Text("LOAD VIDEO FROM GALLERY"),
-              onPressed: () async {
-                await _getVideo(ImageSource.gallery);
-              },
-            ),
-            //show video player
-            selectedVideo != null ? _videoWidget() : Container(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Future<void> _getVideo(ImageSource img,) async {
-    final ImagePicker picker = ImagePicker();
-    final pickedFile = await picker.pickVideo(
-        source: img,
-        maxDuration: Duration(
-          seconds: _maxVideoDuration,
-        ));
-    XFile? videoFile = pickedFile;
-    if (videoFile == null) {
-      return;
-    }
-    selectedVideo = File(videoFile.path);
-    debugPrint("Video Path: ${selectedVideo!.path}");
-    videoPlayerController = VideoPlayerController.file(
-      selectedVideo!,
-    )
-      ..initialize().then(
-            (_) {
-          if (videoPlayerController == null) {
-            return;
-          }
-          if (videoPlayerController!.value.duration.inSeconds >
-              _maxVideoDuration) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      VideoTrimmerScreen(
-                        file: selectedVideo!,
-                        maxDuration: _maxVideoDuration,
-                      ),
-                )).then((value) {
-              if (value != null) {
-                selectedVideo = null;
-                videoPlayerController = null;
-                selectedVideo = File(value as String);
-                videoPlayerController = VideoPlayerController.file(
-                  selectedVideo!,
-                )
-                  ..initialize().then((_) {
-                    setState(() {});
-                  });
-              }
-            });
-          } else {
-            showDialog(
-              context: context,
-              builder: (context) =>
-                  AlertDialog(
-                    title: const Text("Video is too short"),
-                    content: const Text("Please choose another video"),
-                    actions: <Widget>[
-                      TextButton(
-                        child: const Text("OK"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  ),
-            );
-          }
-        },
-      );
-  }
-
-  Widget _videoWidget() {
-    return videoPlayerController == null
-        ? const SizedBox.shrink()
-        : videoPlayerController!.value.isInitialized
-        ? Stack(
-      alignment: Alignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(12),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Container(
-                width: double.infinity,
-                height: 150,
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.grey),
-                child: SizedBox(
-                  height: 150,
-                  child: FutureBuilder<Uint8List?>(
-                    future: VideoThumbnail.thumbnailData(
-                      video: selectedVideo!.path,
-                      imageFormat: ImageFormat.JPEG,
-                      maxWidth: 128,
-                      quality: 100,
-                    ),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<Uint8List?> snapshot) {
-                      if (snapshot.connectionState ==
-                          ConnectionState.done &&
-                          snapshot.data != null) {
-                        return Image.memory(
-                          snapshot.data!,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: double.infinity,
-                        );
-                      } else if (snapshot.error != null) {
-                        return Icon(Icons.error);
-                      } else {
-                        return const Center(
-                            child: CircularProgressIndicator());
-                      }
-                    },
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        InkWell(
-           child: Icon(
-            videoPlayerController!.value.isPlaying
-                ? Icons.pause
-                : Icons.play_arrow,
-            color: ColorSchemes.white,
-            size: 50,
-          ),
-        ),
-        Positioned.directional(
-          end: 18,
-          bottom: 18,
-          textDirection: Directionality.of(context),
-          child: Text(
-            "${videoPlayerController!.value.position.inSeconds} / ${videoPlayerController!.value
-                .duration.inSeconds}",
-            style: Theme
-                .of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(
-              color: ColorSchemes.white,
-            ),
-          ),
-        ),
-      ],
-    )
-        : const SizedBox.shrink();
-  }
-}
-``` 
+  
 ```dart
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -511,13 +293,13 @@ class _VideoTrimmerScreenState extends State<VideoTrimmerScreen> {
 [You Can Find The Full Code Here](https://github.com/fadyZaherEng/flutterVideoTrimmer)
 ## Dependencies Used
 ## This package uses (You do not have to import them):
-    flutter_native_video_trimmer: 
-    transparent_image: 
-    image: 
+    flutter_native_video_trimmer:
     video_thumbnail: 
     video_player: 
     path_provider: 
     intl: 
+    transparent_image: 
+    image: 
     path: 
 
 ```

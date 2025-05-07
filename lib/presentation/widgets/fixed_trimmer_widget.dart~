@@ -78,6 +78,27 @@ class FixedTrimmerWidget extends StatefulWidget {
   State<FixedTrimmerWidget> createState() => _FixedTrimmerWidgetState();
 }
 
+/// A widget that provides a video trimmer interface.
+///
+/// Displays a frame-by-frame preview with draggable handles to select
+/// the portion of the video to trim.
+///
+/// Required parameters:
+/// - [viewerWidth]: Width of the trimmer area.
+/// - [viewerHeight]: Height of the trimmer area.
+///
+/// Optional parameters:
+/// - [maxVideoLength]: Maximum duration for the trimmed video.
+/// - [showDuration]: Whether to show start/end times (default: true).
+/// - [durationTextStyle]: Style for the time labels (default: white text).
+/// - [durationStyle]: Format for duration (default: HH:MM:SS).
+/// - [onStartChanged]: Called when start position changes.
+/// - [onEndChanged]: Called when end position changes.
+/// - [onPlaybackStateChanged]: Called when video is played or paused.
+/// - [editorProperties]: Style and behavior options for the trimmer.
+/// - [areaProperties]: Style options for the trim area.
+/// - [onThumbnailsLoaded]: Called when thumbnail generation is complete.
+
 class _FixedTrimmerWidgetState extends State<FixedTrimmerWidget>
     with TickerProviderStateMixin {
   final _trimmerAreaKey = GlobalKey();

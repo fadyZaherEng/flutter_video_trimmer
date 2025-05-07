@@ -2,8 +2,7 @@ name: fz_trimmer
 description: "A video trimmer plugin for Flutter that allows users to trim and edit videos on both iOS and Android."
 repository: https://github.com/fadyZaherEng/flutterVideoTrimmer
 homepage: https://github.com/fadyZaherEng/flutterVideoTrimmer
-version: 0.0.4
-publish_to:
+version: 0.0.5
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
@@ -25,7 +24,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints:
+
+
 flutter:
   uses-material-design: true
 

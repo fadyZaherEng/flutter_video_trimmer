@@ -37,7 +37,7 @@ A Flutter package for trimming videos with customizable features and intuitive c
    In your `pubspec.yaml`:
 ```yaml
 dependencies:
-  fz_trimmer: ^0.0.4
+  fz_trimmer: ^0.0.5
 ```
 
 2. `Install Package` In your project:

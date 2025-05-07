@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_video_trimmer_ios_android/config/theme/color_schemes.dart';
-import 'package:flutter_video_trimmer_ios_android/core/utils/constants.dart';
+import 'package:fz_trimmer/config/theme/color_schemes.dart';
+import 'package:fz_trimmer/core/utils/constants.dart';
 
 class AppTheme {
   String language;

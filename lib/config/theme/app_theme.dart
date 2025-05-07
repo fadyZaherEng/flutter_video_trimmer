@@ -12,8 +12,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: false,
       fontFamily: getFontFamily(),
-      toggleableActiveColor: ColorSchemes.primary,
-      appBarTheme: AppBarTheme(
+       appBarTheme: AppBarTheme(
         centerTitle: true,
         color: ColorSchemes.white,
         elevation: 0.0,
