@@ -1,4 +1,5 @@
 🎬 fz_trimmer
+
 A Flutter package for trimming videos with customizable features and intuitive controls.
 
 ## 📖 Table of Contents
